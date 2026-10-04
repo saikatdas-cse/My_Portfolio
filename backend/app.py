@@ -1,4 +1,3 @@
-```python
 from flask import Flask, request, jsonify, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
@@ -46,14 +45,7 @@ app.config["SESSION_FILE_DIR"] = os.path.join(
 )
 
 app.config["SESSION_COOKIE_HTTPONLY"] = True
-
-# IMPORTANT:
-# Frontend = localhost / Render
-# Backend = HTTPS Render
-# Cross-site session-এর জন্য None দরকার
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
-
-# Render backend HTTPS হওয়ায় Secure=True
 app.config["SESSION_COOKIE_SECURE"] = True
 
 Session(app)
@@ -363,9 +355,7 @@ def admin_login():
         session.clear()
 
         session["admin_logged_in"] = True
-
         session["admin_id"] = admin["id"]
-
         session["admin_username"] = admin["username"]
 
         return jsonify({
@@ -422,8 +412,7 @@ def check_admin_session():
 
             "logged_in": False,
 
-            "message":
-                "Admin is not logged in."
+            "message": "Admin is not logged in."
 
         }), 401
 
@@ -435,15 +424,13 @@ def check_admin_session():
 
         "admin": {
 
-            "id":
-                session.get(
-                    "admin_id"
-                ),
+            "id": session.get(
+                "admin_id"
+            ),
 
-            "username":
-                session.get(
-                    "admin_username"
-                )
+            "username": session.get(
+                "admin_username"
+            )
 
         }
 
@@ -466,8 +453,7 @@ def admin_logout():
 
         "success": True,
 
-        "message":
-            "Admin logged out successfully."
+        "message": "Admin logged out successfully."
 
     }), 200
 
@@ -521,11 +507,9 @@ def get_messages():
 
             "success": True,
 
-            "total":
-                len(messages),
+            "total": len(messages),
 
-            "messages":
-                messages
+            "messages": messages
 
         }), 200
 
@@ -540,8 +524,7 @@ def get_messages():
 
             "success": False,
 
-            "message":
-                "Database error occurred."
+            "message": "Database error occurred."
 
         }), 500
 
@@ -608,8 +591,7 @@ def get_single_message(message_id):
 
                 "success": False,
 
-                "message":
-                    "Message not found."
+                "message": "Message not found."
 
             }), 404
 
@@ -617,8 +599,7 @@ def get_single_message(message_id):
 
             "success": True,
 
-            "message":
-                message
+            "message": message
 
         }), 200
 
@@ -633,8 +614,7 @@ def get_single_message(message_id):
 
             "success": False,
 
-            "message":
-                "Database error occurred."
+            "message": "Database error occurred."
 
         }), 500
 
@@ -716,8 +696,7 @@ def update_message_status(message_id):
 
                 "success": False,
 
-                "message":
-                    "Message not found."
+                "message": "Message not found."
 
             }), 404
 
@@ -730,8 +709,7 @@ def update_message_status(message_id):
             "message":
                 "Message status updated successfully.",
 
-            "status":
-                status
+            "status": status
 
         }), 200
 
@@ -746,8 +724,7 @@ def update_message_status(message_id):
 
             "success": False,
 
-            "message":
-                "Database error occurred."
+            "message": "Database error occurred."
 
         }), 500
 
@@ -801,8 +778,7 @@ def delete_message(message_id):
 
                 "success": False,
 
-                "message":
-                    "Message not found."
+                "message": "Message not found."
 
             }), 404
 
@@ -812,8 +788,7 @@ def delete_message(message_id):
 
             "success": True,
 
-            "message":
-                "Message deleted successfully."
+            "message": "Message deleted successfully."
 
         }), 200
 
@@ -828,8 +803,7 @@ def delete_message(message_id):
 
             "success": False,
 
-            "message":
-                "Database error occurred."
+            "message": "Database error occurred."
 
         }), 500
 
@@ -853,4 +827,3 @@ if __name__ == "__main__":
         host="127.0.0.1",
         port=5000
     )
-```
