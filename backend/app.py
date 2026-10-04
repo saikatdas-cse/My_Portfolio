@@ -1,3 +1,4 @@
+```python
 from flask import Flask, request, jsonify, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_cors import CORS
@@ -47,9 +48,9 @@ app.config["SESSION_FILE_DIR"] = os.path.join(
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 
 # IMPORTANT:
-# Frontend = localhost
+# Frontend = localhost / Render
 # Backend = HTTPS Render
-# তাই cross-site session-এর জন্য None দরকার
+# Cross-site session-এর জন্য None দরকার
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 
 # Render backend HTTPS হওয়ায় Secure=True
@@ -68,7 +69,8 @@ CORS(
         r"/api/*": {
             "origins": [
                 "http://127.0.0.1:5500",
-                "http://localhost:5500"
+                "http://localhost:5500",
+                "https://saikat-my-portfolio-frontend.onrender.com"
             ]
         }
     },
@@ -135,7 +137,6 @@ def submit_contact():
     subject = data.get("subject", "").strip()
     message = data.get("message", "").strip()
 
-
     if not name or not email or not subject or not message:
 
         return jsonify({
@@ -143,10 +144,8 @@ def submit_contact():
             "message": "Please fill in all required fields."
         }), 400
 
-
     connection = None
     cursor = None
-
 
     try:
 
@@ -154,13 +153,11 @@ def submit_contact():
 
         cursor = connection.cursor()
 
-
         query = """
             INSERT INTO contact_messages
             (name, email, phone, subject, message)
             VALUES (%s, %s, %s, %s, %s)
         """
-
 
         cursor.execute(
             query,
@@ -173,15 +170,12 @@ def submit_contact():
             )
         )
 
-
         connection.commit()
-
 
         return jsonify({
             "success": True,
             "message": "Your message has been sent successfully."
         }), 201
-
 
     except mysql.connector.Error as error:
 
@@ -190,12 +184,10 @@ def submit_contact():
             error
         )
 
-
         return jsonify({
             "success": False,
             "message": "Database error occurred."
         }), 500
-
 
     finally:
 
@@ -225,14 +217,12 @@ def create_admin():
         ""
     )
 
-
     if not username or not password:
 
         return jsonify({
             "success": False,
             "message": "Username and password are required."
         }), 400
-
 
     if len(password) < 8:
 
@@ -241,13 +231,10 @@ def create_admin():
             "message": "Password must be at least 8 characters."
         }), 400
 
-
-    password_hash =  generate_password_hash(password)
-
+    password_hash = generate_password_hash(password)
 
     connection = None
     cursor = None
-
 
     try:
 
@@ -255,13 +242,11 @@ def create_admin():
 
         cursor = connection.cursor()
 
-
         query = """
             INSERT INTO admin_users
             (username, password_hash)
             VALUES (%s, %s)
         """
-
 
         cursor.execute(
             query,
@@ -271,15 +256,12 @@ def create_admin():
             )
         )
 
-
         connection.commit()
-
 
         return jsonify({
             "success": True,
             "message": "Admin account created successfully."
         }), 201
-
 
     except mysql.connector.Error as error:
 
@@ -288,12 +270,10 @@ def create_admin():
             error
         )
 
-
         return jsonify({
             "success": False,
             "message": "Could not create admin account."
         }), 500
-
 
     finally:
 
@@ -323,7 +303,6 @@ def admin_login():
         ""
     )
 
-
     if not username or not password:
 
         return jsonify({
@@ -331,20 +310,16 @@ def admin_login():
             "message": "Username and password are required."
         }), 400
 
-
     connection = None
     cursor = None
-
 
     try:
 
         connection = get_db_connection()
 
-
         cursor = connection.cursor(
             dictionary=True
         )
-
 
         query = """
             SELECT
@@ -355,15 +330,12 @@ def admin_login():
             WHERE username = %s
         """
 
-
         cursor.execute(
             query,
             (username,)
         )
 
-
         admin = cursor.fetchone()
-
 
         if not admin:
 
@@ -372,12 +344,10 @@ def admin_login():
                 "message": "Invalid username or password."
             }), 401
 
-
         password_valid = check_password_hash(
             admin["password_hash"],
             password
         )
-
 
         if not password_valid:
 
@@ -385,7 +355,6 @@ def admin_login():
                 "success": False,
                 "message": "Invalid username or password."
             }), 401
-
 
         # ======================================
         # CREATE ADMIN SESSION
@@ -398,7 +367,6 @@ def admin_login():
         session["admin_id"] = admin["id"]
 
         session["admin_username"] = admin["username"]
-
 
         return jsonify({
 
@@ -413,7 +381,6 @@ def admin_login():
 
         }), 200
 
-
     except mysql.connector.Error as error:
 
         print(
@@ -421,12 +388,10 @@ def admin_login():
             error
         )
 
-
         return jsonify({
             "success": False,
             "message": "Database error occurred."
         }), 500
-
 
     finally:
 
@@ -461,7 +426,6 @@ def check_admin_session():
                 "Admin is not logged in."
 
         }), 401
-
 
     return jsonify({
 
@@ -498,7 +462,6 @@ def admin_logout():
 
     session.clear()
 
-
     return jsonify({
 
         "success": True,
@@ -521,25 +484,20 @@ def get_messages():
 
     auth_error = admin_required()
 
-
     if auth_error:
 
         return auth_error
 
-
     connection = None
     cursor = None
-
 
     try:
 
         connection = get_db_connection()
 
-
         cursor = connection.cursor(
             dictionary=True
         )
-
 
         query = """
             SELECT
@@ -555,12 +513,9 @@ def get_messages():
             ORDER BY id DESC
         """
 
-
         cursor.execute(query)
 
-
         messages = cursor.fetchall()
-
 
         return jsonify({
 
@@ -574,14 +529,12 @@ def get_messages():
 
         }), 200
 
-
     except mysql.connector.Error as error:
 
         print(
             "Get messages error:",
             error
         )
-
 
         return jsonify({
 
@@ -591,7 +544,6 @@ def get_messages():
                 "Database error occurred."
 
         }), 500
-
 
     finally:
 
@@ -612,27 +564,22 @@ def get_messages():
 )
 def get_single_message(message_id):
 
-    auth_error =  admin_required()
-
+    auth_error = admin_required()
 
     if auth_error:
 
         return auth_error
 
-
     connection = None
     cursor = None
 
-
     try:
 
-        connection =  get_db_connection()
+        connection = get_db_connection()
 
-
-        cursor =  connection.cursor(
-                dictionary=True
-            )
-
+        cursor = connection.cursor(
+            dictionary=True
+        )
 
         query = """
             SELECT
@@ -648,15 +595,12 @@ def get_single_message(message_id):
             WHERE id = %s
         """
 
-
         cursor.execute(
             query,
             (message_id,)
         )
 
-
-        message =  cursor.fetchone()
-
+        message = cursor.fetchone()
 
         if not message:
 
@@ -669,7 +613,6 @@ def get_single_message(message_id):
 
             }), 404
 
-
         return jsonify({
 
             "success": True,
@@ -679,14 +622,12 @@ def get_single_message(message_id):
 
         }), 200
 
-
     except mysql.connector.Error as error:
 
         print(
             "Single message error:",
             error
         )
-
 
         return jsonify({
 
@@ -696,7 +637,6 @@ def get_single_message(message_id):
                 "Database error occurred."
 
         }), 500
-
 
     finally:
 
@@ -719,27 +659,22 @@ def update_message_status(message_id):
 
     auth_error = admin_required()
 
-
     if auth_error:
 
         return auth_error
 
-
-    data =  request.get_json() or {}
-
+    data = request.get_json() or {}
 
     status = data.get(
-            "status",
-            ""
-        ).strip().lower()
-
+        "status",
+        ""
+    ).strip().lower()
 
     allowed_statuses = [
         "unread",
         "read",
         "replied"
     ]
-
 
     if status not in allowed_statuses:
 
@@ -752,25 +687,20 @@ def update_message_status(message_id):
 
         }), 400
 
-
     connection = None
     cursor = None
 
-
     try:
 
-        connection =  get_db_connection()
+        connection = get_db_connection()
 
-
-        cursor =  connection.cursor()
-
+        cursor = connection.cursor()
 
         query = """
             UPDATE contact_messages
             SET status = %s
             WHERE id = %s
         """
-
 
         cursor.execute(
             query,
@@ -779,7 +709,6 @@ def update_message_status(message_id):
                 message_id
             )
         )
-
 
         if cursor.rowcount == 0:
 
@@ -792,9 +721,7 @@ def update_message_status(message_id):
 
             }), 404
 
-
         connection.commit()
-
 
         return jsonify({
 
@@ -808,14 +735,12 @@ def update_message_status(message_id):
 
         }), 200
 
-
     except mysql.connector.Error as error:
 
         print(
             "Update status error:",
             error
         )
-
 
         return jsonify({
 
@@ -825,7 +750,6 @@ def update_message_status(message_id):
                 "Database error occurred."
 
         }), 500
-
 
     finally:
 
@@ -848,35 +772,28 @@ def delete_message(message_id):
 
     auth_error = admin_required()
 
-
     if auth_error:
 
         return auth_error
 
-
     connection = None
     cursor = None
-
 
     try:
 
         connection = get_db_connection()
 
-
         cursor = connection.cursor()
-
 
         query = """
             DELETE FROM contact_messages
             WHERE id = %s
         """
 
-
         cursor.execute(
             query,
             (message_id,)
         )
-
 
         if cursor.rowcount == 0:
 
@@ -889,9 +806,7 @@ def delete_message(message_id):
 
             }), 404
 
-
         connection.commit()
-
 
         return jsonify({
 
@@ -902,14 +817,12 @@ def delete_message(message_id):
 
         }), 200
 
-
     except mysql.connector.Error as error:
 
         print(
             "Delete message error:",
             error
         )
-
 
         return jsonify({
 
@@ -919,7 +832,6 @@ def delete_message(message_id):
                 "Database error occurred."
 
         }), 500
-
 
     finally:
 
@@ -941,3 +853,4 @@ if __name__ == "__main__":
         host="127.0.0.1",
         port=5000
     )
+```
