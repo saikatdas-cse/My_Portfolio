@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard | My Portfolio</title>
+
+
+    <!-- Admin CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                M
+            </div>
+
+
+            <div>
+
+                <h2>
+                    My Portfolio
+                </h2>
+
+                <span>
+                    Admin Panel
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+
+            <a
+                href="#dashboard"
+                class="nav-item active"
+            >
+
+                <span class="nav-icon">
+                    ▦
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="#messages"
+                class="nav-item"
+            >
+
+                <span class="nav-icon">
+                    ✉
+                </span>
+
+                <span>
+                    Messages
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="admin-profile">
+
+
+                <div class="admin-avatar">
+
+                    <span id="adminAvatar">
+                        A
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="adminUsername">
+                        Administrator
+                    </strong>
+
+                    <small>
+                        Admin
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+                type="button"
+            >
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div>
+
+
+                <p class="eyebrow">
+                    ADMINISTRATION
+                </p>
+
+
+                <h1>
+                    Dashboard
+                </h1>
+
+
+                <p class="subtitle">
+                    Manage and monitor portfolio
+                    contact messages.
+                </p>
+
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+
+                <!-- API STATUS -->
+
+                <div class="status-indicator">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        API Online
+                    </span>
+
+                </div>
+
+
+                <!-- REFRESH -->
+
+                <button
+                    class="refresh-btn"
+                    id="refreshBtn"
+                    type="button"
+                >
+
+                    ↻ Refresh
+
+                </button>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ==========================================
+             STATISTICS
+        =========================================== -->
+
+        <section
+            class="stats-grid"
+            id="dashboard"
+        >
+
+
+            <!-- TOTAL -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+                    ✉
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Total Messages
+                    </p>
+
+
+                    <h2 id="totalMessages">
+                        0
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- UNREAD -->
+
+            <div class="stat-card unread-card">
+
+
+                <div class="stat-icon">
+                    ●
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Unread
+                    </p>
+
+
+                    <h2 id="unreadMessages">
+                        0
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- READ -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Read
+                    </p>
+
+
+                    <h2 id="readMessages">
+                        0
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- REPLIED -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-icon">
+                    ↗
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Replied
+                    </p>
+
+
+                    <h2 id="repliedMessages">
+                        0
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             MESSAGES SECTION
+        =========================================== -->
+
+        <section
+            class="messages-section"
+            id="messages"
+        >
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <p class="eyebrow">
+                        INBOX
+                    </p>
+
+
+                    <h2>
+                        Contact Messages
+                    </h2>
+
+                </div>
+
+
+                <span
+                    class="message-count"
+                    id="messageCount"
+                >
+
+                    0 messages
+
+                </span>
+
+
+            </div>
+
+
+
+            <!-- ======================================
+                 LOADING
+            ======================================= -->
+
+            <div
+                class="loading"
+                id="loading"
+            >
+
+
+                <div class="spinner"></div>
+
+
+                <p>
+                    Loading messages...
+                </p>
+
+
+            </div>
+
+
+
+            <!-- ======================================
+                 ERROR
+            ======================================= -->
+
+            <div
+                class="error-box"
+                id="errorBox"
+            >
+
+                Unable to load messages.
+
+            </div>
+
+
+
+            <!-- ======================================
+                 EMPTY STATE
+            ======================================= -->
+
+            <div
+                class="empty-state"
+                id="emptyState"
+            >
+
+
+                <div class="empty-icon">
+                    ✉
+                </div>
+
+
+                <h3>
+                    No Messages Yet
+                </h3>
+
+
+                <p>
+                    Contact form submissions will
+                    appear here.
+                </p>
+
+
+            </div>
+
+
+
+            <!-- ======================================
+                 MESSAGE TABLE
+            ======================================= -->
+
+            <div
+                class="table-wrapper"
+                id="tableWrapper"
+            >
+
+
+                <table>
+
+
+                    <thead>
+
+
+                        <tr>
+
+
+                            <th>
+                                ID
+                            </th>
+
+
+                            <th>
+                                CONTACT
+                            </th>
+
+
+                            <th>
+                                SUBJECT
+                            </th>
+
+
+                            <th>
+                                MESSAGE
+                            </th>
+
+
+                            <th>
+                                STATUS
+                            </th>
+
+
+                            <th>
+                                DATE
+                            </th>
+
+
+                            <th>
+                                ACTIONS
+                            </th>
+
+
+                        </tr>
+
+
+                    </thead>
+
+
+                    <tbody
+                        id="messagesTableBody"
+                    >
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FOOTER
+        =========================================== -->
+
+        <footer class="dashboard-footer">
+
+
+            <span>
+                My Portfolio Admin Dashboard
+            </span>
+
+
+            <span>
+                Flask + MySQL
+            </span>
+
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         ADMIN JS
+    =========================================== -->
+
+    <script src="js/admin.js?v=20261004"></script>
+
+
+</body>
+
+</html>

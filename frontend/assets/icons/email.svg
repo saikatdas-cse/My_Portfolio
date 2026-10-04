@@ -1,0 +1,37 @@
+<svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="110" cy="110" r="93" fill="#0A66C2"/>
+    
+    <rect
+        x="52"
+        y="70"
+        width="116"
+        height="80"
+        rx="6"
+        fill="white"
+    />
+
+    <path
+        d="M52 76L110 121L168 76"
+        fill="none"
+        stroke="#0A66C2"
+        stroke-width="9"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+
+    <path
+        d="M52 144L91 108"
+        fill="none"
+        stroke="#0A66C2"
+        stroke-width="9"
+        stroke-linecap="round"
+    />
+
+    <path
+        d="M168 144L129 108"
+        fill="none"
+        stroke="#0A66C2"
+        stroke-width="9"
+        stroke-linecap="round"
+    />
+</svg>

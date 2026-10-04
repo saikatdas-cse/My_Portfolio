@@ -1,0 +1,516 @@
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1050px) {
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .hero-container {
+        gap: 35px;
+    }
+
+    .hero-title {
+        font-size: 75px;
+    }
+
+    .hero-role {
+        font-size: 19px;
+    }
+
+    .profile-card {
+        width: 300px;
+    }
+
+    .about-grid {
+        gap: 45px;
+    }
+
+    .contact-grid {
+        gap: 45px;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET / MOBILE NAV
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .nav-cta {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .nav-menu {
+
+        position: absolute;
+
+        top: 82px;
+        left: 20px;
+        right: 20px;
+
+        display: none;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 10px;
+
+        border: 1px solid var(--border);
+        border-radius: 18px;
+
+        background: rgba(8,8,13,0.96);
+
+        backdrop-filter: blur(20px);
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .nav-menu.mobile-active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 14px;
+
+        border-radius: 10px;
+    }
+
+    .nav-link:hover {
+        background: rgba(255,255,255,0.04);
+    }
+
+
+    .hero {
+        padding-top: 130px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-visual {
+        min-height: 520px;
+
+        margin-top: 20px;
+    }
+
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
+        max-width: none;
+    }
+
+    .contact-info {
+        max-width: 600px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: min(100% - 30px, 1180px);
+    }
+
+    .nav-container {
+        width: calc(100% - 30px);
+    }
+
+    .navbar {
+        height: 74px;
+    }
+
+    .nav-container {
+        height: 74px;
+    }
+
+    .nav-menu {
+        top: 74px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding-top: 115px;
+        min-height: auto;
+
+        padding-bottom: 80px;
+    }
+
+    .hero-intro {
+        margin-top: 25px;
+
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .hero-title {
+        font-size: 62px;
+
+        letter-spacing: -3px;
+    }
+
+    .hero-role {
+        font-size: 16px;
+
+        line-height: 1.5;
+    }
+
+    .hero-role span {
+        display: none;
+    }
+
+    .hero-description {
+        font-size: 13px;
+
+        line-height: 1.75;
+    }
+
+    .hero-buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        max-width: 310px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+
+    /* HERO VISUAL */
+
+    .hero-visual {
+        min-height: 430px;
+    }
+
+    .profile-card {
+        width: 270px;
+        min-height: 370px;
+
+        padding: 20px;
+    }
+
+    .avatar-ring {
+        width: 145px;
+        height: 145px;
+    }
+
+    .avatar-inner {
+        width: 133px;
+        height: 133px;
+    }
+
+    .avatar-inner span {
+        font-size: 34px;
+    }
+
+    .profile-avatar {
+        margin-top: 40px;
+    }
+
+    .profile-info h3 {
+        font-size: 20px;
+    }
+
+    .floating-card {
+        padding: 8px 10px;
+    }
+
+    .floating-card-one {
+        left: -2px;
+        top: 75px;
+    }
+
+    .floating-card-two {
+        right: -2px;
+        top: 270px;
+    }
+
+    .floating-card-three {
+        left: 0;
+        bottom: 25px;
+    }
+
+    .orbit-one {
+        width: 360px;
+        height: 180px;
+    }
+
+    .orbit-two {
+        width: 300px;
+        height: 140px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+
+    /* SECTIONS */
+
+    .section {
+        padding: 90px 0;
+    }
+
+    .section-header {
+        gap: 14px;
+
+        margin-bottom: 42px;
+    }
+
+    .section-title {
+        font-size: 38px;
+    }
+
+
+    /* ABOUT */
+
+    .about-grid {
+        gap: 45px;
+    }
+
+    .about-content .about-lead {
+        font-size: 18px;
+    }
+
+    .about-content p {
+        font-size: 13px;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        min-height: 145px;
+    }
+
+    .stat-card h3 {
+        margin-top: 25px;
+    }
+
+
+    /* SKILLS */
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-category {
+        min-height: auto;
+
+        padding: 25px;
+    }
+
+    .skill-category h3 {
+        margin-top: 40px;
+    }
+
+
+    /* PROJECTS */
+
+    .projects-empty {
+        min-height: 360px;
+
+        padding: 35px 20px;
+    }
+
+    .projects-empty::before {
+        inset: 12px;
+    }
+
+    .projects-empty h3 {
+        font-size: 31px;
+    }
+
+    .projects-empty p {
+        font-size: 12px;
+    }
+
+
+    /* EDUCATION */
+
+    .education-timeline {
+        padding-left: 25px;
+    }
+
+    .education-card {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        padding: 23px;
+    }
+
+    .education-marker {
+        left: -25px;
+    }
+
+    .education-content h3 {
+        font-size: 21px;
+    }
+
+
+    /* CONTACT */
+
+    .contact-lead {
+        font-size: 21px;
+    }
+
+    .contact-form-wrapper {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    .form-group textarea {
+        min-height: 130px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-top {
+        flex-direction: column;
+
+        gap: 30px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        gap: 10px;
+
+        line-height: 1.6;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL DEVICES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .hero-title {
+        font-size: 52px;
+    }
+
+    .profile-card {
+        width: 245px;
+    }
+
+    .floating-card-two {
+        right: -10px;
+    }
+
+    .floating-card-one {
+        left: -10px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 20px;
+
+        background: rgba(5, 5, 8, 0.97);
+
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-15px);
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+
+        z-index: 999;
+    }
+
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .nav-link {
+        width: 100%;
+        padding: 14px 10px;
+    }
+
+
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+}

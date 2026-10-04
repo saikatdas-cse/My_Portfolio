@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | My Portfolio</title>
+
+    <link rel="stylesheet"
+          href="css/admin-login.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- Background Decoration -->
+
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+
+
+        <!-- Login Card -->
+
+        <section class="login-card">
+
+            <div class="brand-logo">
+                M
+            </div>
+
+
+            <div class="login-header">
+
+                <p class="eyebrow">
+                    ADMIN PORTAL
+                </p>
+
+                <h1>
+                    Welcome Back
+                </h1>
+
+                <p>
+                    Sign in to manage your portfolio.
+                </p>
+
+            </div>
+
+
+            <!-- Login Form -->
+
+            <form id="adminLoginForm">
+
+                <!-- Username -->
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ◉
+                        </span>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your username"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <div class="label-row">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                    </div>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ●
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Error Message -->
+
+                <div
+                    class="login-message"
+                    id="loginMessage"
+                ></div>
+
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                    id="loginBtn"
+                >
+
+                    <span id="loginBtnText">
+                        Sign In
+                    </span>
+
+                    <span
+                        class="button-spinner"
+                        id="buttonSpinner"
+                    ></span>
+
+                </button>
+
+            </form>
+
+
+            <div class="security-note">
+
+                <span>🔒</span>
+
+                <span>
+                    Secure administrator access
+                </span>
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
+                ← Back to Portfolio
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/admin-login.js"></script>
+
+</body>
+
+</html>
